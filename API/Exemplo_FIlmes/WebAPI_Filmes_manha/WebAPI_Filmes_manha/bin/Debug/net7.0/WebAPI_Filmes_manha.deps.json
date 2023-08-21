@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "WebAPI_Filmes_manha/1.0.0": {
+        "runtime": {
+          "WebAPI_Filmes_manha.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WebAPI_Filmes_manha/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
