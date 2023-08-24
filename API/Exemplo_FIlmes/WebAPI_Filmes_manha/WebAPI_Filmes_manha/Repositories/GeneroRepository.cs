@@ -21,7 +21,7 @@ namespace WebAPI_Filmes_manha.Repositories
         // Integrated security = true -> autenticação win
         public void AtualizarIdCorpo(GeneroDomain genero)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void AtualizarIdUrl(int id, GeneroDomain genero)
@@ -34,9 +34,28 @@ namespace WebAPI_Filmes_manha.Repositories
             throw new NotImplementedException();
         }
 
+        ///<sumary>
+        /// Cadastrar um novo gênero
+        /// </sumary>
+        /// <param name="novoGenero"> Objeto com as informações que serão cadastradas</param>
         public void Cadastrar(GeneroDomain novoGenero)
         {
-            throw new NotImplementedException();
+            //passando a string de conexão com o sql como parâmetro
+            using (SqlConnection conn = new SqlConnection(StringConexao))
+            {
+                //declarar a query que será executada 
+                string queryInsert = "INSERT INTO Genero(nome) VALUES ('" + novoGenero.NomeGenero + "')";
+
+                //declara o SQLCommand passando a query que será executada e a conexão
+                using (SqlCommand cmd = new SqlCommand(queryInsert, conn))
+                {
+                    //Abrimos a conexão com o banco de dados
+                    conn.Open();
+
+                    //executar a query (query insert)
+                    cmd.ExecuteNonQuery();
+                }
+            }        
         }
 
         public void Deletar(int id)
