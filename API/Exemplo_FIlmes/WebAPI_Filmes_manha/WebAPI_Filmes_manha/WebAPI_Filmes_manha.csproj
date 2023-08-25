@@ -4,6 +4,10 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	  <!--A habilitação de comentários XML fornece informações de depuração-->
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <!--remover avisos gerados no nosso projeto-->
+	<NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

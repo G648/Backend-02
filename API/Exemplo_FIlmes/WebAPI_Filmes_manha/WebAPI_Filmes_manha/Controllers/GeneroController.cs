@@ -71,11 +71,31 @@ namespace WebAPI_Filmes_manha.Controllers
                 _generoRepository.Cadastrar(NovoGenero);
 
                 //retorna status code 201 - Created
-                return StatusCode(201);
+                return Created("objeto criado", NovoGenero);
             }
             catch (Exception error)
             {
                 //retorna um status code 400 (Bad Request) e a mesagem do erro
+                return BadRequest(error.Message);
+            }
+        }
+
+        /// <summary>
+        /// Endpoint que deleta todos os objetos criados
+        /// </summary>
+        /// <param name="IdGenero">Objeto deletado na requisição</param>
+        /// <returns>Status code 204 (No Content)</returns>
+        [HttpDelete("{IdGenero}")]
+        public IActionResult Delete(int IdGenero)
+        {
+            try
+            {
+                _generoRepository.Deletar(IdGenero);
+
+                return StatusCode(204);
+            }
+            catch (Exception error)
+            {
                 return BadRequest(error.Message);
             }
         }

@@ -44,11 +44,14 @@ namespace WebAPI_Filmes_manha.Repositories
             using (SqlConnection conn = new SqlConnection(StringConexao))
             {
                 //declarar a query que será executada 
-                string queryInsert = "INSERT INTO Genero(nome) VALUES ('" + novoGenero.NomeGenero + "')";
+                string queryInsert = "INSERT INTO Genero(nome) VALUES (@Nome)";
 
                 //declara o SQLCommand passando a query que será executada e a conexão
                 using (SqlCommand cmd = new SqlCommand(queryInsert, conn))
                 {
+                    //Passa o valor do parâmetro @Nome
+                    cmd.Parameters.AddWithValue("@Nome", novoGenero.NomeGenero);
+
                     //Abrimos a conexão com o banco de dados
                     conn.Open();
 
@@ -58,9 +61,27 @@ namespace WebAPI_Filmes_manha.Repositories
             }        
         }
 
-        public void Deletar(int id)
+        /// <summary>
+        ///  Deleta os objetos que foram cadastrados
+        /// </summary>
+        /// <param name="id"></param>
+        public void Deletar(int IdGenero)
         {
-            throw new NotImplementedException();
+            //passando a string de conexão com o sql como parâmetro
+            using (SqlConnection conn = new SqlConnection(StringConexao)) 
+            {
+                //declarar a query que será executada
+                string queryDelete = "DELETE FROM Genero WHERE IdGenero = @IdGenero";
+
+                using (SqlCommand cmd = new SqlCommand(queryDelete, conn))
+                {
+                    cmd.Parameters.AddWithValue("@IdGenero", IdGenero);
+
+                    conn.Open();
+
+                    cmd.ExecuteNonQuery(); 
+                }
+            }
         }
 
         /// <summary>
