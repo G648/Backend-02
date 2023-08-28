@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebAPI_Filmes_manha.Domains;
 using WebAPI_Filmes_manha.Interfaces;
 using WebAPI_Filmes_manha.Repositories;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WebAPI_Filmes_manha.Controllers
 {
@@ -93,6 +94,54 @@ namespace WebAPI_Filmes_manha.Controllers
                 _generoRepository.Deletar(IdGenero);
 
                 return StatusCode(204);
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Endpoint que busca um Id Específico
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{IdGeneroBuscado}")]
+        public IActionResult BuscarPorId(int IdGeneroBuscado)
+        {
+            try
+            {
+                GeneroDomain buscaPorId = _generoRepository.BuscarPorId(IdGeneroBuscado);
+
+                if (BuscarPorId == null)
+                {
+                    return NotFound("Nenhum gênero foi encontrado");
+                }
+
+                return Ok(buscaPorId);
+            }
+            catch (Exception error)
+            {
+
+                return BadRequest(error.Message);
+            }
+        }
+
+
+        /// <summary>
+        ///     Atualizando os dados 
+        /// </summary>
+        /// <param name="genero"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public IActionResult Update(GeneroDomain genero)
+        {
+            try
+            {
+                _generoRepository.AtualizarIdCorpo(genero);
+
+                return Ok(genero);
             }
             catch (Exception error)
             {

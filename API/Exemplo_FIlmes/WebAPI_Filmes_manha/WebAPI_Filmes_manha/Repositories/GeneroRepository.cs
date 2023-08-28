@@ -21,17 +21,82 @@ namespace WebAPI_Filmes_manha.Repositories
         // Integrated security = true -> autenticação win
         public void AtualizarIdCorpo(GeneroDomain genero)
         {
+            using (SqlConnection conn = new SqlConnection(StringConexao))
+            {
+                string queryUpdate = "UPDATE Genero SET Nome = @Nome WHERE IdGenero = @IdGenero";
+
+                using (SqlCommand cmd = new SqlCommand(queryUpdate, conn))
+                {
+
+                    cmd.Parameters.AddWithValue("@IdGenero", genero.IdGenero) ;
+
+                    cmd.Parameters.AddWithValue("@Nome", genero.NomeGenero);
+
+                    conn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }             
+            }
+        }
+        
+        /// <summary>
+        /// Atualizar um gênero com base no seu ID
+        /// </summary>
+        /// <param name="id">Id do gênero a ser atualizado</param>
+        /// <param name="genero">Objeto com as informações a serem atualizadas</param>
+        public void AtualizarIdUrl(int id, GeneroDomain genero)
+        {
             
         }
 
-        public void AtualizarIdUrl(int id, GeneroDomain genero)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Buscar um gênero através do seu ID
+        /// </summary>
+        /// <param name="id"> Id do genero a ser buscado </param>
+        /// <returns> Objeto buscado ou null caso não seja encontrado</returns>
         public GeneroDomain BuscarPorId(int id)
         {
-            throw new NotImplementedException();
+            //declara a conexão passando a string de conexão como parâmetros
+            using (SqlConnection conn = new SqlConnection(StringConexao))
+            {
+                //declara o sql command cmd passando a query que será executada e a conexão como parametros
+                string querySelectById = "SELECT IdGenero, Nome FROM Genero WHERE IdGenero = @IdGenero";
+
+                //abre a conexão com o banco de dados
+                conn.Open();
+
+                //declara a variavei para receber os valores da query 
+                SqlDataReader rdr;
+
+                //declara o sql command cmd passando a query que será executada e a conexão como parametros
+                using (SqlCommand cmd = new SqlCommand(querySelectById,conn))
+                {
+                    //passa o valor para o parâmetro IdGenero
+                    cmd.Parameters.AddWithValue("@IdGenero", id);
+
+                    //executa a query e armazena os dados no rdr
+                    rdr = cmd.ExecuteReader();
+
+                    //verifica se o resultado da query retornou algum registro
+                    if (rdr.Read())
+                    {
+                        //se sim, instancia um novo objeto generoBuscado do tipo GeneroDomain
+                        GeneroDomain generoBuscado = new GeneroDomain()
+                        {
+                            //atribui a propriedade idgenero o valor da coluna "IdGenero" da tabela do banco de dados
+                            IdGenero = Convert.ToInt32(rdr["IdGenero"]),
+
+                            //atribui a propriedade nome o valor da coluna "nome" da tabala do banco de dados
+                            NomeGenero = rdr["Nome"].ToString()
+                        };
+                        //Retorna o generoBuscado com os dados obtidos
+                        return generoBuscado;
+                    }
+                    //se não, retorna null
+                    return null;
+                }
+            }            
+            
         }
 
         ///<sumary>
