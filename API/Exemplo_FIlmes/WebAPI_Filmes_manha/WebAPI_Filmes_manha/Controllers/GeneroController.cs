@@ -148,5 +148,35 @@ namespace WebAPI_Filmes_manha.Controllers
                 return BadRequest(error.Message);
             }
         }
+
+        /// <summary>
+        /// Atualizando os dados apenas com o ID da requisição
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        public IActionResult UpdateById(int id, GeneroDomain genero)
+        {
+            try
+            {
+                GeneroDomain generoAtualizado = _generoRepository.BuscarPorId(genero.IdGenero);
+
+                if (BuscarPorId == null)
+                {
+                    return NotFound("Nenhum gênero foi encontrado");
+                }
+
+                genero.IdGenero = id;
+
+                _generoRepository.AtualizarIdUrl(id, genero);
+
+                return Ok(generoAtualizado);
+                
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
     }
 }

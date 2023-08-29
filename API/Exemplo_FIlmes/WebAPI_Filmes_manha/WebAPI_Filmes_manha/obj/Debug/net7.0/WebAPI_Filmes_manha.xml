@@ -48,6 +48,13 @@
             <param name="genero"></param>
             <returns></returns>
         </member>
+        <member name="M:WebAPI_Filmes_manha.Controllers.GeneroController.UpdateById(System.Int32,WebAPI_Filmes_manha.Domains.GeneroDomain)">
+            <summary>
+            Atualizando os dados apenas com o ID da requisição
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:WebAPI_Filmes_manha.Domains.FilmeDomain">
             <summary>
                 Classe que representa a entidade (tabela) filme

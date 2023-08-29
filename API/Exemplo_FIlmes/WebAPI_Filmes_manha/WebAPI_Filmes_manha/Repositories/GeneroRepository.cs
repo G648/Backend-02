@@ -44,9 +44,30 @@ namespace WebAPI_Filmes_manha.Repositories
         /// </summary>
         /// <param name="id">Id do gênero a ser atualizado</param>
         /// <param name="genero">Objeto com as informações a serem atualizadas</param>
-        public void AtualizarIdUrl(int id, GeneroDomain genero)
+        public void AtualizarIdUrl(int Id, GeneroDomain genero)
         {
-            
+            //realizando a criação da conexão com o banco de dados (vamos realizar todos os comandos através dele)
+            using (SqlConnection conn = new SqlConnection(StringConexao))
+            {
+                //Realizando o comando do banco de dados passando uma string "selecById"  e por fim indicando o comando que queremos
+                string selectById = "UPDATE Genero SET Nome = @Nome WHERE IdGenero = @IdGenero";
+
+                //Vamos colocar esse comando que executamos acima e guarda em uma variável chamada cmd
+                //passamos como parâmetro a string do comando e a conexão
+                using (SqlCommand cmd = new SqlCommand(selectById, conn))
+                {
+                    cmd.Parameters.AddWithValue("@IdGenero", genero.IdGenero);
+
+                    cmd.Parameters.AddWithValue("@Nome", genero.NomeGenero);
+
+                    //abrindo conexão
+                    conn.Open();
+
+                    //executando os comandos acima
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
         }
 
         /// <summary>
@@ -152,7 +173,7 @@ namespace WebAPI_Filmes_manha.Repositories
         /// <summary>
         ///     Listar todos os objetos gêneros
         /// </summary>
-        /// <returns> Lista contendo todos os objetos filmes </returns>
+        /// <returns> Lista contendo todos os objetos generos </returns>
         /// <exception cref="NotImplementedException"></exception>
         public List<GeneroDomain> ListarTodos()
         {
