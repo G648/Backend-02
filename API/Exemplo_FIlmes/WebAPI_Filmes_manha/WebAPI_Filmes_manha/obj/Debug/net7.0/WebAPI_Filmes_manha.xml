@@ -4,6 +4,43 @@
         <name>WebAPI_Filmes_manha</name>
     </assembly>
     <members>
+        <member name="P:WebAPI_Filmes_manha.Controllers.FilmeController._filmeRepository">
+            <summary>
+             objeto _generoRepository que iirá receber todos os métodos definidos na interface IGeneroRepository
+             </summary>
+        </member>
+        <member name="M:WebAPI_Filmes_manha.Controllers.FilmeController.#ctor">
+            <summary>
+            Instancia o objeto _generoRepository para que haja referência aos métodos no repositório
+            </summary>
+        </member>
+        <member name="M:WebAPI_Filmes_manha.Controllers.FilmeController.Get">
+            <summary>
+            EndPoint que aciona o método ListarTodos no repositório e retorna a resposta para o usuário (front-end)
+            </summary>
+            <returns>retorna a resposta para o usuário (front-end)</returns>
+        </member>
+        <member name="M:WebAPI_Filmes_manha.Controllers.FilmeController.Post(WebAPI_Filmes_manha.Domains.FilmeDomain)">
+            <summary>
+            Método para realizar o cadastro de um novo filme
+            </summary>
+            <param name="novoFilme">Objeto recebido na requisição</param>
+            <returns>Status Code 201 (created)</returns>
+        </member>
+        <member name="M:WebAPI_Filmes_manha.Controllers.FilmeController.Delete(System.Int32)">
+            <summary>
+            Método para realizar o delete de um determinado filme
+            </summary>
+            <param name="id">id recebido para identificar o filme que será excluido</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI_Filmes_manha.Controllers.FilmeController.Get(System.Int32)">
+            <summary>
+            Método para realizar busca em um Id Específico
+            </summary>
+            <param name="IdFilme"></param>
+            <returns></returns>
+        </member>
         <member name="P:WebAPI_Filmes_manha.Controllers.GeneroController._generoRepository">
             <summary>
              objeto _generoRepository que iirá receber todos os métodos definidos na interface IGeneroRepository
@@ -153,6 +190,23 @@
             <param name="id"> id do objeto a ser buscado</param>
             <returns>Objeto Buscado</returns>
         </member>
+        <member name="F:WebAPI_Filmes_manha.Repositories.FilmeRepository.StringConexao">
+            <summary>
+            String de conexão com o banco de dados que recebe os seguintes parametros:
+            DataSource : Nome do servidor
+            Initial Catalog : Nome da tabela do banco de dados
+            Autenticação:
+                -windows: Integrated security = true
+                -sqlserver: userId = sa; Pwd = senha
+            </summary>
+        </member>
+        <member name="M:WebAPI_Filmes_manha.Repositories.FilmeRepository.ListarTodos">
+            <summary>
+            Listar todos os objetos Filmes
+            </summary>
+            <returns>Lista contendo todos os objetos filmes</returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
         <member name="T:WebAPI_Filmes_manha.Repositories.GeneroRepository">
             <summary>
             
@@ -198,7 +252,7 @@
             <summary>
                 Listar todos os objetos gêneros
             </summary>
-            <returns> Lista contendo todos os objetos filmes </returns>
+            <returns> Lista contendo todos os objetos generos </returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
     </members>

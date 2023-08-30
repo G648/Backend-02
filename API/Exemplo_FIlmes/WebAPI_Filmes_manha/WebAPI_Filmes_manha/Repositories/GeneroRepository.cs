@@ -30,7 +30,7 @@ namespace WebAPI_Filmes_manha.Repositories
 
                     cmd.Parameters.AddWithValue("@IdGenero", genero.IdGenero) ;
 
-                    cmd.Parameters.AddWithValue("@Nome", genero.NomeGenero);
+                    cmd.Parameters.AddWithValue("@Nome", genero.Nome);
 
                     conn.Open();
 
@@ -58,7 +58,7 @@ namespace WebAPI_Filmes_manha.Repositories
                 {
                     cmd.Parameters.AddWithValue("@IdGenero", genero.IdGenero);
 
-                    cmd.Parameters.AddWithValue("@Nome", genero.NomeGenero);
+                    cmd.Parameters.AddWithValue("@Nome", genero.Nome);
 
                     //abrindo conexão
                     conn.Open();
@@ -108,7 +108,7 @@ namespace WebAPI_Filmes_manha.Repositories
                             IdGenero = Convert.ToInt32(rdr["IdGenero"]),
 
                             //atribui a propriedade nome o valor da coluna "nome" da tabala do banco de dados
-                            NomeGenero = rdr["Nome"].ToString()
+                            Nome = rdr["Nome"].ToString()
                         };
                         //Retorna o generoBuscado com os dados obtidos
                         return generoBuscado;
@@ -136,7 +136,7 @@ namespace WebAPI_Filmes_manha.Repositories
                 using (SqlCommand cmd = new SqlCommand(queryInsert, conn))
                 {
                     //Passa o valor do parâmetro @Nome
-                    cmd.Parameters.AddWithValue("@Nome", novoGenero.NomeGenero);
+                    cmd.Parameters.AddWithValue("@Nome", novoGenero.Nome);
 
                     //Abrimos a conexão com o banco de dados
                     conn.Open();
@@ -207,7 +207,7 @@ namespace WebAPI_Filmes_manha.Repositories
                             //atribui a propriedade IdGenero o valor recebido no rdr
                             IdGenero = Convert.ToInt32(rdr[0]),
 
-                            NomeGenero = rdr["Nome"].ToString()
+                            Nome = rdr["Nome"].ToString()
                         };
 
                         //adiciona cada objeto dentro da lista

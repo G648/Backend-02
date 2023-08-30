@@ -11,7 +11,7 @@ namespace WebAPI_Filmes_manha.Domains
         public int IdGenero { get; set; }
 
         [Required(ErrorMessage ="O nome do filme é obrigatório")]
-        public string? TituloFilme { get; set; }
+        public string? NomeFilme { get; set; }
 
         public GeneroDomain? Genero { get; set; }
 
