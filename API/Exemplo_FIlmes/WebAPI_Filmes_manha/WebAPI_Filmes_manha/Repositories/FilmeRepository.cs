@@ -17,15 +17,60 @@ namespace WebAPI_Filmes_manha.Repositories
         private string StringConexao = "Data Source = NOTE16-S15; Initial Catalog = Filmes; User id = sa; Pwd = Senai@134";
         public void AtualizarIdCorpo(FilmeDomain filme)
         {
-            using (SqlConnection conn = new SqlConnection (StringConexao))
+            //realizando a conexão com meu banco de dados
+            using (SqlConnection conn = new SqlConnection(StringConexao))
             {
-                
+                //inserindo o comando de atualização da requisição
+                string queryUpdateByBody = "UPDATE Filme SET NomeFilme = @NomeFilme, IdGenero = @IdGenero WHERE IdFilme = @IdFilme";
+
+                //conexão aberta com meu banco de dados
+                conn.Open();
+
+                //inserindo o comando que demos logo acima 
+                using (SqlCommand cmd = new SqlCommand(queryUpdateByBody, conn))
+                {
+                    //inserindo os comandos com os parametros que definimos na string de atualizar
+                    cmd.Parameters.AddWithValue("@IdFilme", filme.IdFilme);
+
+                    cmd.Parameters.AddWithValue("@NomeFilme", filme.NomeFilme);
+
+                    cmd.Parameters.AddWithValue("@IdGenero", filme.IdGenero);
+
+                    //executando os comandos do banco de dados
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
+        /// <summary>
+        /// Busca um filme pelo filme que especificamos na requisição
+        /// </summary>
+        /// <param name="id">Id do genero a ser buscado </param>
+        /// <param name="filme">Objeto com as informações a serem atualizadas</param>
+        /// <exception cref="NotImplementedException"></exception>
         public void AtualizarIdUrl(int id, FilmeDomain filme)
         {
-            throw new NotImplementedException();
+            //realizar o comando para string de conexão
+            using (SqlConnection conn = new SqlConnection (StringConexao))
+            {
+                //realizar o comando que seria executado no banco de dados
+                string selectById = "UPDATE Filme SET NomeFilme = @NomeFilme, IdGenero = @IdGenero WHERE IdFilme = @IdFilme";
+
+                //vamos passar esse comando em uma variável chamada cmd
+                //passamos também a string de conexão como um parâmetro do comando
+                using (SqlCommand cmd = new SqlCommand(selectById, conn))
+                {
+                    cmd.Parameters.AddWithValue("@IdFilme", id);
+
+                    cmd.Parameters.AddWithValue("@NomeFilme", filme.NomeFilme);
+
+                    cmd.Parameters.AddWithValue("@IdGenero", filme.IdGenero);
+
+                    conn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public FilmeDomain BuscarPorId(int id)
@@ -34,7 +79,7 @@ namespace WebAPI_Filmes_manha.Repositories
             {
                 string querySelectById = "SELECT IdFilme, NomeFilme FROM Filme WHERE IdFilme = @IdFilme";
 
-                conn.Open ();
+                conn.Open();
 
                 SqlDataReader rdr;
 
@@ -42,7 +87,7 @@ namespace WebAPI_Filmes_manha.Repositories
                 {
                     cmd.Parameters.AddWithValue("@IdFilme", id);
 
-                    rdr = cmd.ExecuteReader ();
+                    rdr = cmd.ExecuteReader();
 
                     //realizar validação pra ver se o comando funcionou
 
@@ -88,7 +133,7 @@ namespace WebAPI_Filmes_manha.Repositories
 
         public void Deletar(int id)
         {
-            using (SqlConnection conn = new SqlConnection (StringConexao))
+            using (SqlConnection conn = new SqlConnection(StringConexao))
             {
                 string queryDeleteFilm = "DELETE FROM Filme WHERE IdFilme = @IdFilme";
 
@@ -144,15 +189,15 @@ namespace WebAPI_Filmes_manha.Repositories
 
                                 Nome = rdr["Nome"].ToString()
                             }
-                    };
+                        };
 
-                    ListaFilmes.Add(filme);
+                        ListaFilmes.Add(filme);
 
+                    }
                 }
-            }
 
-            return ListaFilmes;
+                return ListaFilmes;
+            }
         }
     }
-}
 }

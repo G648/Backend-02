@@ -111,7 +111,52 @@ namespace WebAPI_Filmes_manha.Controllers
             }
         }
 
+        /// <summary>
+        /// Método para realizar a atualização de um fime pelo corpo
+        /// </summary>
+        /// <param name="filme">Retornando o objeto todo para realizar o update pelo corpo do objeto</param>
+        /// <returns>Retorna o objeto atualizado como um todo</returns>
+        [HttpPut]
+        public IActionResult Update(FilmeDomain filme)
+        {
+            try
+            {
+                _filmeRepository.AtualizarIdCorpo(filme);
 
+                return Ok(filme);
+            }
+            catch (Exception error)
+            {
 
+                return BadRequest(error.Message);
+            }
+        }
+
+        /// <summary>
+        /// Método para realizar a atualização de um determinado filme, especificando o ID do mesmo
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        public IActionResult UpdateById(int id, FilmeDomain filme)
+        {
+            try
+            {
+                FilmeDomain filmUpdate = _filmeRepository.BuscarPorId(id);
+
+                if (filmUpdate == null)
+                {
+                    return NotFound("Objeto não foi encontrado");
+                }
+
+                _filmeRepository.AtualizarIdUrl(id, filme);
+                
+                return Ok(filme);
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
     }
 }

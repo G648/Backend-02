@@ -41,6 +41,20 @@
             <param name="IdFilme"></param>
             <returns></returns>
         </member>
+        <member name="M:WebAPI_Filmes_manha.Controllers.FilmeController.Update(WebAPI_Filmes_manha.Domains.FilmeDomain)">
+            <summary>
+            Método para realizar a atualização de um fime pelo corpo
+            </summary>
+            <param name="filme">Retornando o objeto todo para realizar o update pelo corpo do objeto</param>
+            <returns>Retorna o objeto atualizado como um todo</returns>
+        </member>
+        <member name="M:WebAPI_Filmes_manha.Controllers.FilmeController.UpdateById(System.Int32,WebAPI_Filmes_manha.Domains.FilmeDomain)">
+            <summary>
+            Método para realizar a atualização de um determinado filme, especificando o ID do mesmo
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="P:WebAPI_Filmes_manha.Controllers.GeneroController._generoRepository">
             <summary>
              objeto _generoRepository que iirá receber todos os métodos definidos na interface IGeneroRepository
@@ -92,6 +106,14 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:WebAPI_Filmes_manha.Controllers.UsuarioController.buscarUser(System.String,System.String)">
+            <summary>
+            Método para realizar a busca de um determinado usuário cadastrado em nosso sistema
+            </summary>
+            <param name="EmailUser"></param>
+            <param name="SenhaUser"></param>
+            <returns></returns>
+        </member>
         <member name="T:WebAPI_Filmes_manha.Domains.FilmeDomain">
             <summary>
                 Classe que representa a entidade (tabela) filme
@@ -100,6 +122,11 @@
         <member name="T:WebAPI_Filmes_manha.Domains.GeneroDomain">
             <summary>
                 Classe que representa a entidade(Tabela) Genero
+            </summary>
+        </member>
+        <member name="P:WebAPI_Filmes_manha.Domains.UsuarioDomain.IdUsuario">
+            <summary>
+                Classe que representa a entidade(Tabela) Usuario
             </summary>
         </member>
         <member name="T:WebAPI_Filmes_manha.Interfaces.IFilmeRepository">
@@ -199,6 +226,14 @@
                 -windows: Integrated security = true
                 -sqlserver: userId = sa; Pwd = senha
             </summary>
+        </member>
+        <member name="M:WebAPI_Filmes_manha.Repositories.FilmeRepository.AtualizarIdUrl(System.Int32,WebAPI_Filmes_manha.Domains.FilmeDomain)">
+            <summary>
+            Busca um filme pelo filme que especificamos na requisição
+            </summary>
+            <param name="id">Id do genero a ser buscado </param>
+            <param name="filme">Objeto com as informações a serem atualizadas</param>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:WebAPI_Filmes_manha.Repositories.FilmeRepository.ListarTodos">
             <summary>
