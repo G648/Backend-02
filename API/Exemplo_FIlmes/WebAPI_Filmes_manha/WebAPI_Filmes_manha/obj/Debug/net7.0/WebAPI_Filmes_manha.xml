@@ -290,5 +290,23 @@
             <returns> Lista contendo todos os objetos generos </returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
+        <member name="F:WebAPI_Filmes_manha.Repositories.UsuarioRepository.StringConexao">
+            <summary>
+            String de conexão com o banco de dados que recebe os seguintes parâmetros:
+            Datasource : Nome do Servidor
+            Initial Catalog: Nome da tabela do banco de dados
+            Autenticação:
+                -windows: Integrated security = true
+                -sqlServer: userId = sa; Pwd = senha
+            </summary>
+        </member>
+        <member name="M:WebAPI_Filmes_manha.Repositories.UsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Método para realizar a busca dos usuarios criados dentro do banco de dados
+            </summary>
+            <param name="EmailUser"> </param>
+            <param name="SenhaUser"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

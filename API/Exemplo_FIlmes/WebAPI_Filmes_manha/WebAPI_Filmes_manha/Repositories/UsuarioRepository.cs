@@ -41,6 +41,8 @@ namespace WebAPI_Filmes_manha.Repositories
 
                     rdr = cmd.ExecuteReader();
 
+                    //podemos executar o cmd com o seguinte comando: sqldatareader rdr = cmd.executereader();
+
                     if (rdr.Read())
                     {
                         UsuarioDomain usuarioBuscado = new UsuarioDomain()
