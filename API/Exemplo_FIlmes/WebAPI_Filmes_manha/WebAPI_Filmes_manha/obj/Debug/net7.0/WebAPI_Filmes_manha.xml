@@ -106,12 +106,11 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:WebAPI_Filmes_manha.Controllers.UsuarioController.buscarUser(System.String,System.String)">
+        <member name="M:WebAPI_Filmes_manha.Controllers.UsuarioController.Login(WebAPI_Filmes_manha.Domains.UsuarioDomain)">
             <summary>
             Método para realizar a busca de um determinado usuário cadastrado em nosso sistema
             </summary>
-            <param name="EmailUser"></param>
-            <param name="SenhaUser"></param>
+            <param name="usuario"></param>
             <returns></returns>
         </member>
         <member name="T:WebAPI_Filmes_manha.Domains.FilmeDomain">
@@ -216,6 +215,14 @@
             </summary>
             <param name="id"> id do objeto a ser buscado</param>
             <returns>Objeto Buscado</returns>
+        </member>
+        <member name="M:WebAPI_Filmes_manha.Interfaces.IUsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Classe que será utilizada no UsuarioRepository, usado para logar um novo usuário
+            </summary>
+            <param name="EmailUser"></param>
+            <param name="SenhaUser"></param>
+            <returns></returns>
         </member>
         <member name="F:WebAPI_Filmes_manha.Repositories.FilmeRepository.StringConexao">
             <summary>
