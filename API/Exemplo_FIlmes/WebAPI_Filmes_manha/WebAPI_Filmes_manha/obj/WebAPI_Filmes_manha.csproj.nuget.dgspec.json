@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\45845444845\\Desktop\\Back-End\\Backend-02\\API\\Exemplo_FIlmes\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha.csproj": {}
+    "C:\\Users\\cezar\\OneDrive\\Área de Trabalho\\Backend-02\\API\\Exemplo_FIlmes\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha.csproj": {}
   },
   "projects": {
-    "C:\\Users\\45845444845\\Desktop\\Back-End\\Backend-02\\API\\Exemplo_FIlmes\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha.csproj": {
+    "C:\\Users\\cezar\\OneDrive\\Área de Trabalho\\Backend-02\\API\\Exemplo_FIlmes\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\45845444845\\Desktop\\Back-End\\Backend-02\\API\\Exemplo_FIlmes\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha.csproj",
+        "projectUniqueName": "C:\\Users\\cezar\\OneDrive\\Área de Trabalho\\Backend-02\\API\\Exemplo_FIlmes\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha.csproj",
         "projectName": "WebAPI_Filmes_manha",
-        "projectPath": "C:\\Users\\45845444845\\Desktop\\Back-End\\Backend-02\\API\\Exemplo_FIlmes\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha.csproj",
-        "packagesPath": "C:\\Users\\45845444845\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\45845444845\\Desktop\\Back-End\\Backend-02\\API\\Exemplo_FIlmes\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha\\obj\\",
+        "projectPath": "C:\\Users\\cezar\\OneDrive\\Área de Trabalho\\Backend-02\\API\\Exemplo_FIlmes\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha.csproj",
+        "packagesPath": "C:\\Users\\cezar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\cezar\\OneDrive\\Área de Trabalho\\Backend-02\\API\\Exemplo_FIlmes\\WebAPI_Filmes_manha\\WebAPI_Filmes_manha\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\45845444845\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cezar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -76,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

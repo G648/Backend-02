@@ -56,7 +56,7 @@ namespace WebAPI_Filmes_manha.Controllers
                     new Claim(ClaimTypes.Role, usuarioBuscado.PermissaoUser),
 
                     //existe a possibilidade de criar uma claim personalizada
-                    new Claim("valor personalizado", "valor personalizado")
+                    //new Claim("valor personalizado", "valor personalizado")
                 };
 
                 //2º -> difinir a chave de acesso ao token
